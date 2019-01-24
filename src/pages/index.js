@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import { client } from '../apollo/client'
 import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
@@ -9,6 +10,7 @@ import thumb01 from '../assets/images/thumbs/Google_replica.png'
 import thumb02 from '../assets/images/thumbs/Personal_site.png'
 import thumb03 from '../assets/images/thumbs/Personal_site_codepen.png'
 import thumb04 from '../assets/images/thumbs/Tribute_page.png'
+import gql from 'graphql-tag'
 // import thumb05 from '../assets/images/thumbs/05.jpg'
 // import thumb06 from '../assets/images/thumbs/06.jpg'
 
@@ -80,6 +82,12 @@ class HomeIndex extends React.Component {
       lightboxIsOpen: false,
       currentImage: 0,
       extraTextIsVisible: false,
+      showSuccessMessage: false,
+      form: {
+        name: '',
+        email: '',
+        message: '',
+      },
     }
 
     this.closeLightbox = this.closeLightbox.bind(this)
@@ -124,9 +132,71 @@ class HomeIndex extends React.Component {
     this.gotoNext()
   }
 
+  showSuccessMessage = () => {
+    this.setState(() => ({
+      showSuccessMessage: true,
+    }))
+  }
+
+  onChangeInput = (event, inputName) => {
+    const userInput = event.target.value
+    console.log(userInput, inputName)
+
+    this.setState(currentState => {
+      return {
+        form: { ...currentState.form, [inputName]: userInput },
+      }
+    })
+  }
+
+  onSubmit = e => {
+    e.preventDefault()
+    const { name, email, message } = this.state.form
+    client
+      .mutate({
+        mutation: gql`
+          mutation createAnInquiry(
+            $name: String!
+            $email: String!
+            $message: String!
+          ) {
+            createInquiry(name: $name, email: $email, message: $message) {
+              id
+              name
+              message
+            }
+          }
+        `,
+        variables: {
+          name,
+          email,
+          message,
+        },
+      })
+      .then(result => {
+        console.log('result', result)
+        this.setState(
+          {
+            form: {
+              name: '',
+              email: '',
+              message: '',
+            },
+          },
+          () => this.showSuccessMessage()
+        )
+      })
+  }
+
   render() {
     const siteTitle = 'Gatsby Starter - Strata'
     const siteDescription = 'Site description'
+
+    // var formName = this.state.form.name
+    // var formMessage = this.state.form.message
+    // var formEmail = this.state.form.email
+
+    const { name, email, message } = this.state.form
 
     return (
       <Layout>
@@ -213,14 +283,16 @@ class HomeIndex extends React.Component {
             <p>Have a question or want to work together?</p>
             <div className="row">
               <div className="8u 12u$(small)">
-                <form method="post" action="#">
+                <form onSubmit={this.onSubmit}>
                   <div className="row uniform 50%">
                     <div className="6u 12u$(xsmall)">
                       <input
                         type="text"
                         name="name"
                         id="name"
-                        placeholder="Name"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={event => this.onChangeInput(event, 'name')}
                       />
                     </div>
                     <div className="6u 12u$(xsmall)">
@@ -228,28 +300,39 @@ class HomeIndex extends React.Component {
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="Email"
+                        placeholder="Emter your email"
+                        value={email}
+                        onChange={event => this.onChangeInput(event, 'email')}
                       />
                     </div>
                     <div className="12u">
                       <textarea
                         name="message"
                         id="message"
-                        placeholder="Message"
+                        placeholder="Type a message here"
                         rows="4"
+                        value={message}
+                        onChange={event => this.onChangeInput(event, 'message')}
                       />
                     </div>
                   </div>
+                  <ul
+                    style={{
+                      marginBottom: 8,
+                      marginTop: 24,
+                    }}
+                    className="actions"
+                  >
+                    <li>
+                      <input type="submit" value="Send Message" />
+                    </li>
+                  </ul>
+                  {this.state.showSuccessMessage && (
+                    <p style={{ color: '#42ad8e' }}>
+                      Thanks for reaching out, I'll respond shortly!
+                    </p>
+                  )}
                 </form>
-                <ul className="actions">
-                  <li>
-                    <input
-                      type="submit"
-                      value="Send Message"
-                      action="mailto:dreyah.a@gmail.com"
-                    />
-                  </li>
-                </ul>
               </div>
               <div className="4u 12u$(small)">
                 <ul className="labeled-icons">
