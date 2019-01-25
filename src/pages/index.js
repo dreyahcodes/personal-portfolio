@@ -10,7 +10,6 @@ import thumb01 from '../assets/images/thumbs/Google_replica.png'
 import thumb02 from '../assets/images/thumbs/Personal_site.png'
 import thumb03 from '../assets/images/thumbs/Personal_site_codepen.png'
 import thumb04 from '../assets/images/thumbs/Tribute_page.png'
-import gql from 'graphql-tag'
 // import thumb05 from '../assets/images/thumbs/05.jpg'
 // import thumb06 from '../assets/images/thumbs/06.jpg'
 
@@ -153,26 +152,25 @@ class HomeIndex extends React.Component {
     e.preventDefault()
     const { name, email, message } = this.state.form
     client
-      .mutate({
-        mutation: gql`
-          mutation createAnInquiry(
-            $name: String!
-            $email: String!
-            $message: String!
-          ) {
-            createInquiry(name: $name, email: $email, message: $message) {
-              id
-              name
-              message
-            }
+      .request(
+        `mutation createAnInquiry(
+          $name: String!
+          $email: String!
+          $message: String!
+        ) {
+          createInquiry(name: $name, email: $email, message: $message) {
+            id
+            name
+            message
           }
-        `,
-        variables: {
+        }
+      `,
+        {
           name,
           email,
           message,
-        },
-      })
+        }
+      )
       .then(result => {
         console.log('result', result)
         this.setState(
@@ -189,8 +187,8 @@ class HomeIndex extends React.Component {
   }
 
   render() {
-    const siteTitle = 'Gatsby Starter - Strata'
-    const siteDescription = 'Site description'
+    const siteTitle = "Dreyah's Portfolio"
+    const siteDescription = "Dreyah's Portfolio "
 
     // var formName = this.state.form.name
     // var formMessage = this.state.form.message
@@ -300,7 +298,7 @@ class HomeIndex extends React.Component {
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="Emter your email"
+                        placeholder="Enter your email"
                         value={email}
                         onChange={event => this.onChangeInput(event, 'email')}
                       />
