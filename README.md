@@ -6,4 +6,4 @@ This is gatsby-JS powered site that showcases my work portfolio.
 
 ## Link
 
-http://www.dreyah.com/
+https://www.dreyah.com/
