@@ -246,7 +246,7 @@ class HomeIndex extends React.Component {
             )}
             <ul className="actions">
               <li onClick={this.toggleExtraText}>
-                <a href="#" className="button">
+                <a className="button">
                   {this.state.extraTextIsVisible ? 'See Less' : 'Learn More'}
                 </a>
               </li>
