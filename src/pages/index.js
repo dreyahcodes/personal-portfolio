@@ -6,10 +6,11 @@ import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
 
-import thumb01 from '../assets/images/thumbs/Google_replica.png'
-import thumb02 from '../assets/images/thumbs/Personal_site.png'
-import thumb03 from '../assets/images/thumbs/Personal_site_codepen.png'
-import thumb04 from '../assets/images/thumbs/Tribute_page.png'
+import thumb01 from '../assets/images/thumbs/weather_app.png'
+import thumb02 from '../assets/images/thumbs/Google_replica.png'
+import thumb03 from '../assets/images/thumbs/Personal_site.png'
+import thumb04 from '../assets/images/thumbs/Personal_site_codepen.png'
+import thumb05 from '../assets/images/thumbs/Tribute_page.png'
 // import thumb05 from '../assets/images/thumbs/05.jpg'
 // import thumb06 from '../assets/images/thumbs/06.jpg'
 
@@ -20,39 +21,48 @@ import thumb04 from '../assets/images/thumbs/Tribute_page.png'
 // import full05 from '../assets/images/fulls/05.jpg'
 // import full06 from '../assets/images/fulls/06.jpg'
 
-const image1Src = 'https://google-replica-site.netlify.com/'
-const image2Src = 'https://dreyahcodes.github.io/'
-const image3Src = 'https://codepen.io/dreyahcodes/full/mxLRgN'
-const image4Src = 'https://codepen.io/dreyahcodes/full/EEWgvG'
+const image1Src = 'https://dreyah-weather-app.netlify.com/'
+const image2Src = 'https://google-replica-site.netlify.com/'
+const image3Src = 'https://dreyahcodes.github.io/'
+const image4Src = 'https://codepen.io/dreyahcodes/full/mxLRgN'
+const image5Src = 'https://codepen.io/dreyahcodes/full/EEWgvG'
 
 const DEFAULT_IMAGES = [
   {
     id: '1',
     src: image1Src,
     thumbnail: thumb01,
-    caption: 'Google home page replica',
+    caption: 'Weather App',
     description:
-      '6 months into coding: Created pixel-perfect replica of google homepage at full screen width using html, css(flexbox).',
+      '9 months into coding: Created a weather application using APIs in React.',
   },
   {
     id: '2',
     src: image2Src,
     thumbnail: thumb02,
-    caption: 'Personal Project Site',
+    caption: 'Google home page replica',
     description:
-      '4 months into coding: Created using Jekyll, Gulp, Sass, Pug and JavaScript.',
+      '6 months into coding: Created pixel-perfect replica of google homepage at full screen width using html, css(flexbox).',
   },
   {
     id: '3',
     src: image3Src,
     thumbnail: thumb03,
-    caption: 'Personal Portfolio site',
-    description: '1 month into coding: Created using html, css, bootstrap.',
+    caption: 'Personal Project Site',
+    description:
+      '4 months into coding: Created using Jekyll, Gulp, Sass, Pug and JavaScript.',
   },
   {
     id: '4',
     src: image4Src,
     thumbnail: thumb04,
+    caption: 'Personal Portfolio site',
+    description: '1 month into coding: Created using html, css, bootstrap.',
+  },
+  {
+    id: '5',
+    src: image5Src,
+    thumbnail: thumb05,
     caption: 'Tribute page to Katherine Johnson',
     description:
       '2 weeks in coding: Created my first website - a tribute page to Katherine Johnson using html, css and bootstrap',
@@ -204,6 +214,29 @@ class HomeIndex extends React.Component {
         </Helmet>
 
         <div id="main">
+          <section id="two">
+            <h2>Recent Work</h2>
+
+            <Gallery
+              images={DEFAULT_IMAGES.map(
+                ({ id, src, thumbnail, caption, description }) => ({
+                  src,
+                  thumbnail,
+                  caption,
+                  description,
+                })
+              )}
+            />
+
+            {/* <ul className="actions">
+              <li>
+                <a href="#" className="button">
+                  Full Portfolio
+                </a>
+              </li>
+            </ul> */}
+          </section>
+
           <section id="one">
             <header className="major">
               <h2>About Me</h2>
@@ -211,7 +244,7 @@ class HomeIndex extends React.Component {
             <p>
               With over 7 years of experience in the US fitness industry, I
               recently transitioned into the technology space. I started
-              learning how to code about 8 months ago and I am familiar with
+              learning how to code about 9 months ago and I am familiar with
               core HTML, CSS and some JavaScript, which is where I am currently
               in my code-learning journey. I am also quite proficient in using
               design applications specifically, Sketch and Adobe Photoshop.
@@ -251,29 +284,6 @@ class HomeIndex extends React.Component {
                 </a>
               </li>
             </ul>
-          </section>
-
-          <section id="two">
-            <h2>Recent Work</h2>
-
-            <Gallery
-              images={DEFAULT_IMAGES.map(
-                ({ id, src, thumbnail, caption, description }) => ({
-                  src,
-                  thumbnail,
-                  caption,
-                  description,
-                })
-              )}
-            />
-
-            {/* <ul className="actions">
-              <li>
-                <a href="#" className="button">
-                  Full Portfolio
-                </a>
-              </li>
-            </ul> */}
           </section>
 
           <section id="three">
