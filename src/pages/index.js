@@ -242,25 +242,25 @@ class HomeIndex extends React.Component {
               <h2>About Me</h2>
             </header>
             <p>
-              With over 7 years of experience in the US fitness industry, I
+              With over 10 years of experience in the US fitness industry, I
               recently transitioned into the technology space. I started
-              learning how to code about 9 months ago and I am familiar with
-              core HTML, CSS and some JavaScript, which is where I am currently
-              in my code-learning journey. I am also quite proficient in using
-              design applications specifically, Sketch and Adobe Photoshop.
+              learning how to code mid-2018, and I am familiar with core HTML,
+              CSS and some JavaScript, which is where I am currently in my
+              code-learning journey. I am also quite proficient in using design
+              applications specifically, Sketch and Adobe Photoshop.
             </p>
             {this.state.extraTextIsVisible && (
               <React.Fragment>
                 <p>
                   As a personal project, 2 years ago I started an online fitness
-                  platform called Dreyah Fit. This came about when I wanted to
-                  solve a simple problem through technology - create a free
-                  online platform for women who needed real-life guidance on how
-                  to live healthier lives. I was able to get the Dreyah Fit
-                  brand up and running with no prior knowledge, through trial
-                  and error, working closely with a team of web developers,
-                  designers and managing co-marketing activities with other
-                  brands.
+                  platform called Dreyah Fit (now rebranded as Every Fit Girl).
+                  This came about when I wanted to solve a simple problem
+                  through technology - create a free online platform for women
+                  who needed real-life guidance on how to live healthier lives.
+                  I was able to get the Dreyah Fit brand up and running with no
+                  prior knowledge, through trial and error, working closely with
+                  a team of web developers, designers and managing co-marketing
+                  activities with other brands.
                 </p>
                 <p>
                   This was when my curiosity for software development was born
