@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
 
+import thumb00 from '../assets/images/thumbs/everyfitgirl_site.png'
 import thumb01 from '../assets/images/thumbs/weather_app.png'
 import thumb02 from '../assets/images/thumbs/Google_replica.png'
 import thumb03 from '../assets/images/thumbs/Personal_site.png'
@@ -21,6 +22,7 @@ import thumb05 from '../assets/images/thumbs/Tribute_page.png'
 // import full05 from '../assets/images/fulls/05.jpg'
 // import full06 from '../assets/images/fulls/06.jpg'
 
+const image0Src = 'https://everyfitgirl.co/'
 const image1Src = 'https://dreyah-weather-app.netlify.com/'
 const image2Src = 'https://google-replica-site.netlify.com/'
 const image3Src = 'https://dreyahcodes.github.io/'
@@ -28,6 +30,14 @@ const image4Src = 'https://codepen.io/dreyahcodes/full/mxLRgN'
 const image5Src = 'https://codepen.io/dreyahcodes/full/EEWgvG'
 
 const DEFAULT_IMAGES = [
+  {
+    id: '0',
+    src: image0Src,
+    thumbnail: thumb00,
+    caption: 'Every Fit Girl',
+    description:
+      '13 months into coding: created a free fitness and lifestyle platform for women using gatsbyJS.',
+  },
   {
     id: '1',
     src: image1Src,

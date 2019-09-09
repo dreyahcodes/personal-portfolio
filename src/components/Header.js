@@ -12,10 +12,11 @@ class Header extends React.Component {
             <img src={avatar} alt="" />
           </a>
           <h1>
-            <strong>Hi, I'm Dreyah.</strong> I spend most of my time, everyday,
-            experimenting with HTML, CSS and JavaScript, while learning how to
-            build and manage products. <br /> I am passionate about change
-            through technology. <br />
+            <strong>Hi, I'm Dreyah.</strong> I'm passionate about solving real
+            world problems. <br /> Totally in love with the web and web
+            technologies. I spend most of my time expanding my knowledge on
+            software development, while learning how to build and manage
+            products, people and community. <br />
             {/* Also creator, and blogger at{' '}
             <a href="http://www.dreyahfit.com/">Dreyah Fit</a> a fitness
             platform for women. */}
